@@ -1,9 +1,8 @@
-Flask==3.0.0
-Flask-CORS==4.0.0
-SQLAlchemy==2.0.23
-psycopg2-binary==2.9.9
-python-dotenv==1.0.0
-GeoAlchemy2==0.14.2
-Shapely==2.0.2
-
-Flask Flask-CORS SQLAlchemy psycopg2-binary python-dotenv GeoAlchemy2 Shapely
+Flask
+Flask-CORS
+Flask-RESTX
+SQLAlchemy
+psycopg2-binary
+python-dotenv
+GeoAlchemy2
+Shapely
