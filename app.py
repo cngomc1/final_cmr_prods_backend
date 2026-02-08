@@ -3,7 +3,10 @@ from flask_restx import Api, Resource, fields
 from flask_cors import CORS
 import psycopg2
 from psycopg2.extras import RealDictCursor
+from dotenv import load_dotenv
+import os
 
+load_dotenv()  # charge .env en local uniquement
 
 app = Flask(__name__)
 CORS(app) 
@@ -11,10 +14,10 @@ CORS(app)
 api = Api(app, title="API Bassins de Production", doc='/swagger')
 
 DB_CONFIG = {
-    "host": "localhost",
-    "database": "bassins_productions",
-    "user": "postgres",
-    "password": "postgres"
+    "host": os.getenv("DB_HOST"),
+    "dbname": os.getenv("DB_NAME"),
+    "user": os.getenv("DB_USER"),
+    "password": os.getenv("DB_PASSWORD")
 }
 
 
