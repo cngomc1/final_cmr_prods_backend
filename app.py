@@ -14,15 +14,24 @@ CORS(app)
 api = Api(app, title="API Bassins de Production", doc='/swagger')
 
 DB_CONFIG = {
-    "host": os.getenv("DB_HOST"),
-    "dbname": os.getenv("DB_NAME"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD")
+    "host": "localhost",
+    "database": "bassins_productions",
+    "user": "postgres",
+    "password": "postgres"
 }
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+
 
 
 def query_db(query, args=(), one=False):
-    conn = psycopg2.connect(**DB_CONFIG)
+    if DATABASE_URL:
+        conn= psycopg2.connect(DATABASE_URL)
+    else:
+        conn = psycopg2.connect(**DB_CONFIG)
+
+    # conn = psycopg2.connect(**DB_CONFIG)
     cur = conn.cursor(cursor_factory=RealDictCursor)
     # cur.execute('SET search_path TO "cameroun", public;')
     cur.execute(query, args)
